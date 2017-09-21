@@ -1,9 +1,5 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
 var _nodeTelegramBotApi = require('node-telegram-bot-api');
 
 var _nodeTelegramBotApi2 = _interopRequireDefault(_nodeTelegramBotApi);
@@ -38,35 +34,116 @@ function onMessage(message) {
 
 function onCallbackQuery(callbackQuery) {
     console.log('callbackQuery:', callbackQuery);
-    if (callbackQuery.data === 'helpCmd') {
-        var helpText = "Tonight game will be very hot, dude";
-        tg.sendMessage(callbackQuery.message.chat.id, helpText);
-        tg.answerCallbackQuery(callbackQuery.id);
-    } else if (callbackQuery.data === 'gameCmd') {
-        var _helpText = "Take off the t-shirt, make photo and send it to ur girlfriend, ok, ololo?";
-        tg.sendMessage(callbackQuery.message.chat.id, _helpText);
-        tg.answerCallbackQuery(callbackQuery.id);
+    if (callbackQuery.data === 'catalogCmd') {
+        var goToFromMenu1 = goToCatalog(callbackQuery);
+    } else if (callbackQuery.data === 'FAQCmd') {
+        var goToFromMenu2 = goToFAQ(callbackQuery);
+    } else if (callbackQuery.data === 'callBackCmd') {
+        var getNumberForCallBack = goToCallBack(callbackQuery);
+    } else if (callbackQuery.data === 'feedBackCmd') {
+        var helpText = "Если у вас есть пожелания к работе магазина, пишите сюда, хули";
+        var answer = "Ну а хули вы хотели??!";
+        tg.sendMessage(callbackQuery.message.chat.id, helpText, { caption: "I\'m a cute bot!" });
+        tg.answerCallbackQuery(callbackQuery.id, answer);
     }
 }
 
 // *********************************************
-function sendStartMessage(message) {
-    var text = 'Hello, my dear Mitya';
-    //
-    var helpButton = {
-        text: "Об игре",
-        callback_data: 'helpCmd'
-        //
-    };var gameButton = {
-        text: "Начать игру",
-        callback_data: 'gameCmd'
-        //
-    };var options = {};
+function goToCallBack(callbackQuery) {
+
+    var options = {
+        "parse_mode": "Markdown",
+        "reply_markup": {
+            "one_time_keyboard": true,
+            "keyboard": [[{
+                text: "My phone number",
+                request_contact: true
+            }], ["Cancel"]]
+        }
+    };
+
+    tg.sendMessage(callbackQuery.message.chat.id, "How to contact you?", options);
+}
+
+function goToFAQ(callbackQuery) {
+
+    var text = 'Часто задаваемые вопросы';
+
+    var Button1 = {
+        text: '1',
+        callback_data: '1'
+    };
+
+    var Button2 = {
+        text: '2',
+        callback_data: '2'
+    };
+
+    var options = {};
     options.reply_markup = {};
     options.reply_markup.inline_keyboard = [];
-    options.reply_markup.inline_keyboard.push([helpButton]);
-    options.reply_markup.inline_keyboard.push([gameButton]);
+    options.reply_markup.inline_keyboard.push([Button1]);
+    options.reply_markup.inline_keyboard.push([Button2]);
+
+    tg.sendMessage(callbackQuery.message.chat.id, text, options);
+}
+
+function goToCatalog(callbackQuery) {
+
+    var text = 'CATALOG';
+
+    var Button1 = {
+        text: '1',
+        callback_data: '1'
+    };
+
+    var Button2 = {
+        text: '2',
+        callback_data: '2'
+    };
+
+    var options = {};
+    options.reply_markup = {};
+    options.reply_markup.inline_keyboard = [];
+    options.reply_markup.inline_keyboard.push([Button1]);
+    options.reply_markup.inline_keyboard.push([Button2]);
+
+    tg.sendMessage(callbackQuery.message.chat.id, text, options);
+}
+
+function sendStartMessage(message) {
+    var text = 'Выберите желаемое действие : ';
+
+    var catalogButton = {
+        text: 'Каталог товаров',
+        callback_data: 'catalogCmd'
+
+    };
+
+    var FAQButton = {
+        text: "FAQ",
+        callback_data: 'FAQCmd'
+    };
+
+    var callBackButton = {
+        text: "Заказ обратного звонка",
+        callback_data: 'callBackCmd'
+    };
+
+    var feedBackButton = {
+        text: "Отзывы и предложения",
+        callback_data: 'feedBackCmd'
+    };
+
+    var options = {};
+    options.reply_markup = {};
+    options.reply_markup.inline_keyboard = [];
+    options.reply_markup.inline_keyboard.push([catalogButton]);
+    options.reply_markup.inline_keyboard.push([FAQButton]);
+    options.reply_markup.inline_keyboard.push([callBackButton]);
+    options.reply_markup.inline_keyboard.push([feedBackButton]);
+
     tg.sendMessage(message.chat.id, text, options);
 }
 
-exports.default = create;
+create();
