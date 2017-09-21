@@ -1,1 +1,1 @@
-web: node —debug=5858 dist/bot.js
+web: node dist/bot.js
