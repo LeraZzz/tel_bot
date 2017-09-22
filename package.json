@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/bot.js",
   "scripts": {
-    "start": "babel src -d dist --presets es2015 && node dist/index.js",
+    "start": "babel src -d dist --presets es2015 && node dist/bot.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist --presets es2015",
     "watch": "babel src -d dist --presets es2015 -w"
