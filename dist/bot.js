@@ -1,20 +1,20 @@
 'use strict';
 
-let _nodeTelegramBotApi = require('node-telegram-bot-api');
+var _nodeTelegramBotApi = require('node-telegram-bot-api');
 
-let _nodeTelegramBotApi2 = _interopRequireDefault(_nodeTelegramBotApi);
+var _nodeTelegramBotApi2 = _interopRequireDefault(_nodeTelegramBotApi);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-let botan = require('botanio')('786f747c-6fe7-4a7f-95a6-c8ef510a59f0');
+var botan = require('botanio')('786f747c-6fe7-4a7f-95a6-c8ef510a59f0');
 
-let mongoose = require('mongoose');
+var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/test', { useMongoClient: true, promiseLibrary: global.Promise });
 
-let Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-let userSchema = new Schema({
+var userSchema = new Schema({
     first_name: String,
     last_name: String,
     message_text: String,
@@ -23,7 +23,7 @@ let userSchema = new Schema({
     chat_id: Number
 });
 
-let userNumberSchema = new Schema({
+var userNumberSchema = new Schema({
     first_name: String,
     last_name: String,
     message_text: String,
@@ -33,7 +33,7 @@ let userNumberSchema = new Schema({
     number: String
 });
 
-let userReviewSchema = new Schema({
+var userReviewSchema = new Schema({
     first_name: String,
     last_name: String,
     message_text: String,
@@ -42,14 +42,15 @@ let userReviewSchema = new Schema({
     review: String
 });
 
-let User = mongoose.model('User', userSchema);
-let UserNumber = mongoose.model('UserNumber', userNumberSchema);
-let UserReview = mongoose.model('UserReview', userReviewSchema);
+var User = mongoose.model('User', userSchema);
+var UserNumber = mongoose.model('UserNumber', userNumberSchema);
+var UserReview = mongoose.model('UserReview', userReviewSchema);
 
-let tg = void 0;
+var tg = void 0;
+
 function create() {
     //  const token = "387016243:AAEXimznXpHl5ke6qpUanexj_Wm9mH79y_s"
-    let token = "467244885:AAHILNeTqyldJJzC4XLyfbIl8JxmdK8w62A";
+    var token = "467244885:AAHILNeTqyldJJzC4XLyfbIl8JxmdK8w62A";
     tg = new _nodeTelegramBotApi2.default(token, {
         polling: true
     });
@@ -96,18 +97,33 @@ function onCallbackQuery(callbackQuery) {
     console.log('callbackQuery:', callbackQuery);
 
     if (callbackQuery.data === 'catalogCmd') {
-        let goToFromMenu1 = goToCatalog(callbackQuery);
+        var goToFromMenu1 = goToCatalog(callbackQuery);
+    } else if (callbackQuery.data === 'menuCmd') {
+
+        var goToMenu = sendStartMessage2(callbackQuery);
     } else if (callbackQuery.data === 'catalogHair') {
-        console.log('it s after checking data');
-        let goToCatalogHair = goToCatalogHair1(callbackQuery);
+
+        var goToCatalogHair = goToCatalogHair1(callbackQuery);
     } else if (callbackQuery.data === 'catalogFace') {
-        let goToCatalogFace = goToCatalogFace1(callbackQuery);
+        var goToCatalogFace = goToCatalogFace1(callbackQuery);
+    } else if (callbackQuery.data === 'catalogBody') {
+
+        var goToCatalogBody = goToCatalogBody1(callbackQuery);
+    } else if (callbackQuery.data === 'catalogSkin') {
+
+        var goToCatalogSkin = goToCatalogSkin1(callbackQuery);
+    } else if (callbackQuery.data === 'catalogComplex') {
+
+        var goToCatalogComplex = goToCatalogComplex1(callbackQuery);
+    } else if (callbackQuery.data === 'catalogOil') {
+
+        var goToCatalogOil = goToCatalogOil1(callbackQuery);
     } else if (callbackQuery.data === 'FAQCmd') {
-        let goToFromMenu2 = goToFAQ(callbackQuery);
+        var goToFromMenu2 = goToFAQ(callbackQuery);
     } else if (callbackQuery.data === 'callBackCmd') {
-        let getNumberForCallBack = goToCallBack(callbackQuery);
+        var getNumberForCallBack = goToCallBack(callbackQuery);
     } else if (callbackQuery.data === 'feedBackCmd') {
-        let helpText = "Если у вас есть пожелания к работе магазина, напишите сюда ваш отзыв, и мы обязательно учтем его в дальнейшей работе";
+        var helpText = "Если у вас есть пожелания к работе магазина, напишите сюда ваш отзыв, и мы обязательно учтем его в дальнейшей работе";
 
         tg.sendMessage(callbackQuery.message.chat.id, helpText);
         // tg.answerCallbackQuery(message.chat.id, text, answer)
@@ -117,7 +133,7 @@ function onCallbackQuery(callbackQuery) {
 // *********************************************
 function goToCallBack(callbackQuery) {
 
-    let options = {
+    var options = {
         "parse_mode": "Markdown",
         "reply_markup": {
             "force_reply": true,
@@ -126,13 +142,13 @@ function goToCallBack(callbackQuery) {
             "remove_keyboard": true,
             "callback_data": "numberQuery",
             "keyboard": [[{
-                text: "My phone number",
+                text: "Заказать звонок менеджера",
                 request_contact: true
             }], ["Cancel"]]
         }
     };
 
-    tg.sendMessage(callbackQuery.message.chat.id, "How to contact you?", options);
+    tg.sendMessage(callbackQuery.message.chat.id, "Как с вами связаться?", options); //"text inside"
 
     User.create({
 
@@ -150,154 +166,301 @@ function goToCallBack(callbackQuery) {
 
 function goToFAQ(callbackQuery) {
 
-    let text = 'Часто задаваемые вопросы:';
+    var text = 'Часто задаваемые вопросы 🤗 :';
 
-    let Button1 = {
+    var Button1 = {
         text: 'wtf',
         callback_data: '1'
     };
 
-    let Button2 = {
-        text: '2',
+    var Button2 = {
+        text: 'Do Androids dream of electric sheep?',
         callback_data: '2'
     };
+    var Button3 = {
+        text: 'Назад в меню',
+        callback_data: 'menuCmd'
+    };
 
-    let options = {};
-    options.reply_markup = {};
-    options.reply_markup.inline_keyboard = [];
-    options.reply_markup.inline_keyboard.push([Button1]);
-    options.reply_markup.inline_keyboard.push([Button2]);
-
-    tg.sendMessage(callbackQuery.message.chat.id, text, options);
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
 }
 
 function goToCatalog(callbackQuery) {
 
-    let text = 'CATALOG';
+    var text = 'Каталог нашей продукции :';
 
-    let Button1 = {
+    var Button1 = {
         text: 'Уход за волосами',
         callback_data: 'catalogHair'
     };
 
-    let Button2 = {
+    var Button2 = {
         text: 'Уход за лицом',
         callback_data: 'catalogFace'
     };
 
-    let Button3 = {
+    var Button3 = {
         text: 'Уход за телом',
         callback_data: 'catalogBody'
-        // callback_data: 'FAQCmd'
+
     };
 
-    let Button4 = {
-        text: '2Уход за кожей',
+    var Button4 = {
+        text: 'Уход за кожей',
         callback_data: 'catalogSkin'
     };
-    let Button5 = {
+    var Button5 = {
         text: 'Комплексный уход',
         callback_data: 'catalogComplex'
     };
 
-    let Button6 = {
+    var Button6 = {
         text: 'Озонированное масло О3',
         callback_data: 'catalogOil'
     };
 
-    let options = {};
-    options.reply_markup = {};
-    options.reply_markup.inline_keyboard = [];
-    options.reply_markup.inline_keyboard.push([Button1]);
-    options.reply_markup.inline_keyboard.push([Button2]);
-    options.reply_markup.inline_keyboard.push([Button3]);
-    options.reply_markup.inline_keyboard.push([Button4]);
-    options.reply_markup.inline_keyboard.push([Button5]);
+    var Button7 = {
+        text: 'Назад в меню',
+        callback_data: 'menuCmd'
+    };
 
-    tg.sendMessage(callbackQuery.message.chat.id, text, options);
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3], [Button4], [Button5], [Button6], [Button7]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
 }
 
 function goToCatalogFace1(callbackQuery) {
 
-    let text = "Face cosmetics here";
-    let Button1 = {
-        text: 'wtf',
-        callback_data: 'catalogFace1'
+    var text = 'УХОД ЗА ЛИЦОМ\n' + '\n' + 'По отзывам косметологов, в эстетической медицине не существует проблем, которые в той или иной степени не решались бы с помощью косметики с озоном! Главный принцип действия озоновых кремов для ухода за лица — коррекция повреждений и возрастных изменений кожи за счет активизации собственных защитных сил и реакций восстановления.';
+
+    var Button1 = {
+        text: 'OZONE CREAM PV500. Озоновый крем дневной. Экспресс-уход (вакуумный флакон 50 мл)',
+        callback_data: 'catalogFaceDayExpress'
     };
 
-    let Button2 = {
-        text: '2',
-        callback_data: 'catalogFace2'
+    var Button2 = {
+        text: 'OZONE CREAM PV500. Озоновый крем ночной. Релакс (вакуумный флакон 50 мл)',
+        callback_data: 'catalogFaceNightRelax'
     };
 
-   /* let options = {};
-    options.reply_markup = {};
-    options.reply_markup.inline_keyboard = [];
-    options.reply_markup.inline_keyboard.push([Button1]);
-    options.reply_markup.inline_keyboard.push([Button2]);
-*/
-    let options = {
+    var Button3 = {
+        text: 'OzoneBeauty ® Крем для лица с озоном. Комбинированная и жирная кожа. PV 2000 (вакуумный флакон, 50 мл)',
+        callback_data: 'catalogFacePV20001'
+    };
 
-        "reply_markup": JSON.stringify({
+    var Button4 = {
+        text: 'OzoneBeauty ® Крем для лица с озоном. Сухая и нормальная кожа. PV 2000 (вакуумный флакон, 50 мл)',
+        callback_data: 'catalogFacePV20002'
+    };
 
-
-            "inline_keyboard": [
-                [Button1], [Button2]
-            ]
+    var Button5 = {
+        text: 'Назад к каталогу',
+        callback_data: 'catalogCmd'
+    };
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3], [Button4], [Button5]]
         })
-    };
-    let msg_id = callbackQuery.message.message_id-1
-    tg.editMessageText( {message_id: msg_id},{chat_id: callbackQuery.message.chat.id}, text = "ololo", reply_markup);
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
 }
 
 function goToCatalogHair1(callbackQuery) {
 
-    //let text = 'Наши озоновые крем-маски — непревзойденное средство для восстановления и роста волос. Они обладают бактерицидными и противогрибковыми свойствами, оказывают противоалергенное и проивовоспалительное действие. Пройдите курсовое лечение, и результаты вас приятно удивят!'
-    let text = 'ololo';
-    let Button1 = {
+    var text = 'Наши озоновые крем-маски — непревзойденное средство для восстановления и роста волос. Они обладают бактерицидными и противогрибковыми свойствами, оказывают противоалергенное и проивовоспалительное действие. Пройдите курсовое лечение, и результаты вас приятно удивят!';
+
+    var Button1 = {
         text: 'OZONE CREAM PV500',
         callback_data: 'catalogHairPV500'
 
     };
 
-    let Button2 = {
+    var Button2 = {
         text: 'OzoneBeauty',
         callback_data: 'catalogHairOzoneBeauty'
     };
 
-    let options = {};
-    options.reply_markup = {};
-    options.reply_markup.inline_keyboard = [];
-    options.reply_markup.inline_keyboard.push([Button1]);
-    options.reply_markup.inline_keyboard.push([Button2]);
+    var Button3 = {
+        text: 'Назад к каталогу',
+        callback_data: 'catalogCmd'
+    };
 
-    tg.sendMessage(callbackQuery.message.chat.id, text, options);
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
 }
-function sendStartMessage(message) {
-    let text = ' Ozone Cosmetics bot is here for you: ';
 
-    let catalogButton = {
+function goToCatalogBody1(callbackQuery) {
+
+    var text = 'УХОД ЗА ТЕЛОМ ЛЕНИНА\n' + '\n' + 'Антицеллюлитная серия •Уникальный комплекс озонидов расщепляет и выводит жир, повышает упругость и улучшает текстуру кожи. Заметно улучшает состояние кожи, уменьшает эффект ―апельсиновой корки‖. •Применение озон - крема усиливает лимфодренаж и выделение жидкости из тканей, что способствует быстрой потере объемов и снижению веса. •При регулярном применении озон-крем улучшает тонус кожи, придает ей эластичность и бархатистость.';
+
+    var Button1 = {
+        text: 'OzoneTherapy® Озон-крем антицеллюлитный. PV 3000. (банка 125 мл)',
+        callback_data: 'catalogBodyOzoneTherapy'
+    };
+    var Button2 = {
+        text: 'Назад к каталогу',
+        callback_data: 'catalogCmd'
+    };
+
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
+}
+
+function goToCatalogSkin1(callbackQuery) {
+
+    var text = 'ПРОФИЛАКТИЧЕСКАЯ СЕРИЯ OZODERMIS. ОЗОНОВЫЙ УХОД ЗА КОЖЕЙ\n' + '\n' + 'Представляем серию профилактических кремов OZODERMIS. Активное вещество крема – озониды, эффективное средство для лечения и восстановления поврежденной кожи. Озониды защищают кожу от вирусов и бактерий, активируют кровообращение и кислородоснабжение тканей, процессы клеточного дыхания и иммунитета, удаляют токсины, повышают устойчивость к агрессивной внешней среде. Производится 3 крема с озонидами, отличающиеся содержанием активного компонента.';
+
+    var Button1 = {
+        text: 'ОZODERMIS 3% (80ml)',
+        callback_data: 'catalogSkinOzodermis3'
+
+    };
+
+    var Button2 = {
+        text: 'ОZODERMIS 5% (50ml)',
+        callback_data: 'catalogSkinOzodermis5'
+    };
+    var Button3 = {
+        text: 'ОZODERMIS 10% (30ml)',
+        callback_data: 'catalogSkinOzodermis10'
+    };
+    var Button4 = {
+        text: 'Назад к каталогу',
+        callback_data: 'catalogCmd'
+    };
+
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3], [Button4]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
+}
+
+function goToCatalogComplex1(callbackQuery) {
+
+    var text = 'Коплексный уход :';
+    var Button1 = {
+        text: 'КОМПЛЕКС «ПОЛНОЕ ВОССТАНОВЛЕНИЕ ВОЛОС»',
+        callback_data: 'catalogComplexHair'
+
+    };
+
+    var Button2 = {
+        text: 'КОМПЛЕКС «ИДЕАЛЬНОЕ ТЕЛО»',
+        callback_data: 'catalogComplexBody'
+    };
+
+    var Button3 = {
+        text: 'КОМПЛЕКС «БЕЗУПРЕЧНО ЧИСТАЯ КОЖА»',
+        callback_data: 'catalogComplexSkin'
+    };
+    var Button4 = {
+        text: 'Назад к каталогу',
+        callback_data: 'catalogCmd'
+    };
+
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3], [Button4]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
+}
+
+function goToCatalogOil1(callbackQuery) {
+
+    var text = 'ОЗОНИРОВАННОЕ МАСЛО ОТРИ®\n' + '\n' + 'Показания к применению препаратов серии ОТРИ ®: герпес, кондиломы остроконечные, экземы, атопический дерматит, пиодермии, кандидоз, грибковые заболевания кожи и ногтей, фурункулез, баланопоститы, кольпиты, крауроз вульвы, уретриты и простатиты, раны (в т.ч. вялозаживающие), пролежни, трофические язвы, ожоги, геморрой, трещины заднего прохода, сосков, стопы, стоматиты, гингивиты, конъюнктивиты, острые воспалительные заболевания уха, горла, носа и т.п.';
+
+    var Button1 = {
+        text: 'Озонированное оливковое масло ОТРИ® 6 000 (1 упаковка = 4 флакона по 25 мл)',
+        callback_data: 'catalogOilOtri6'
+
+    };
+
+    var Button2 = {
+        text: 'Озонированное оливковое масло ОТРИ® 12000 (1 упаковка = 4 флакона по 25 мл)',
+        callback_data: 'catalogOilOtri12'
+    };
+
+    var Button3 = {
+        text: 'Назад к каталогу',
+        callback_data: 'catalogCmd'
+    };
+
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[Button1], [Button2], [Button3]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
+}
+
+function sendStartMessage(message) {
+    var text = ' Ozone Cosmetics bot is here for you: 😘';
+
+    var catalogButton = {
         text: 'Каталог товаров',
         callback_data: 'catalogCmd'
 
     };
 
-    let FAQButton = {
+    var FAQButton = {
         text: "FAQ",
         callback_data: 'FAQCmd'
     };
 
-    let callBackButton = {
+    var callBackButton = {
         text: "Заказ обратного звонка",
         callback_data: 'callBackCmd'
     };
 
-    let feedBackButton = {
+    var feedBackButton = {
         text: "Отзывы и предложения",
         callback_data: 'feedBackCmd'
     };
 
-    let options = {};
+    var options = {};
     options.reply_markup = {};
     options.reply_markup.inline_keyboard = [];
     options.reply_markup.inline_keyboard.push([catalogButton]);
@@ -306,6 +469,40 @@ function sendStartMessage(message) {
     options.reply_markup.inline_keyboard.push([feedBackButton]);
 
     tg.sendMessage(message.chat.id, text, options);
+}
+function sendStartMessage2(callbackQuery) {
+    var text = ' Ozone Cosmetics bot is here for you: 😘';
+
+    var catalogButton = {
+        text: 'Каталог товаров',
+        callback_data: 'catalogCmd'
+
+    };
+
+    var FAQButton = {
+        text: "FAQ",
+        callback_data: 'FAQCmd'
+    };
+
+    var callBackButton = {
+        text: "Заказ обратного звонка",
+        callback_data: 'callBackCmd'
+    };
+
+    var feedBackButton = {
+        text: "Отзывы и предложения",
+        callback_data: 'feedBackCmd'
+    };
+
+    var options = Object.assign({}, {
+        reply_markup: JSON.stringify({
+            inline_keyboard: [[catalogButton], [FAQButton], [callBackButton], [feedBackButton]]
+        })
+    }, {
+        message_id: callbackQuery.message.message_id,
+        chat_id: callbackQuery.message.chat.id
+    });
+    tg.editMessageText(text, options);
 }
 
 create();

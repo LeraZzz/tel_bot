@@ -22,14 +22,15 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "ejs": "^2.5.7",
-    "nodemon": "^1.12.1"
+    "ejs": "^2.5.7"
+
   },
   "dependencies": {
     "botanio": "0.0.6",
     "express": "^4.15.4",
     "mongoose": "^4.11.13",
     "node-telegram-bot-api": "^0.28.0",
+
     "request": "^2.82.0",
     "tape": "^4.8.0"
   },
