@@ -440,7 +440,7 @@ function sendStartMessage(message) {
     var text = ' Ozone Cosmetics bot is here for you: 😘';
 
     var catalogButton = {
-        text: 'Каталог товаров',
+        text: 'Каталог товаров 😘',
         callback_data: 'catalogCmd'
 
     };
@@ -480,7 +480,7 @@ function sendStartMessage2(callbackQuery) {
     };
 
     var FAQButton = {
-        text: "FAQ",
+        text: "FAQ ",
         callback_data: 'FAQCmd'
     };
 
@@ -490,7 +490,7 @@ function sendStartMessage2(callbackQuery) {
     };
 
     var feedBackButton = {
-        text: "Отзывы и предложения",
+        text: " Оставить отзыв 😘",
         callback_data: 'feedBackCmd'
     };
 

@@ -550,7 +550,7 @@ function sendStartMessage(message) {
     let text = ' Ozone Cosmetics bot is here for you: 😘'
 
     let catalogButton = {
-        text: 'Каталог товаров',
+        text: 'Каталог товаров 😘',
         callback_data: 'catalogCmd'
 
     }
@@ -591,7 +591,7 @@ function sendStartMessage2(callbackQuery) {
     }
 
     let FAQButton = {
-        text: "FAQ",
+        text: "FAQ ",
         callback_data: 'FAQCmd'
     }
 
@@ -601,7 +601,7 @@ function sendStartMessage2(callbackQuery) {
     }
 
     let feedBackButton = {
-        text: "Отзывы и предложения",
+        text: " Оставить отзыв 😘",
         callback_data: 'feedBackCmd'
     }
 
