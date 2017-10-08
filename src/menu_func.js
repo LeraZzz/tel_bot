@@ -75,24 +75,24 @@ module.exports = {
 
     goToCatalog: function (tg, callbackQuery) {
 
-        let text = 'Каталог нашей продукции :'
+        let text = 'Комплексы Ozone Box:'
 
-        let Button1 = {
-            text: 'Уход за волосами',
+        let Button2 = {
+            text: 'OzoneBox для волос',
             callback_data: 'catalogHair'
         }
 
-        let Button2 = {
-            text: 'Уход за лицом',
+        let Button1 = {
+            text: 'OzoneBox для лица',
             callback_data: 'catalogFace'
         }
 
         let Button3 = {
-            text: 'Уход за телом',
+            text: 'OzoneBox для тела',
             callback_data: 'catalogBody'
 
         }
-
+/*
         let Button4 = {
             text: 'Уход за кожей',
             callback_data: 'catalogSkin'
@@ -106,7 +106,7 @@ module.exports = {
             text: 'Озонированное масло О3',
             callback_data: 'catalogOil'
         }
-
+*/
         let Button7 = {
             text: 'Назад в меню',
             callback_data: 'menuCmd'
@@ -121,9 +121,9 @@ module.exports = {
                             [Button1],
                             [Button2],
                             [Button3],
-                            [Button4],
+                           /* [Button4],
                             [Button5],
-                            [Button6],
+                            [Button6],*/
                             [Button7]
 
                         ]
@@ -136,7 +136,8 @@ module.exports = {
         )
         tg.editMessageText(text, options)
     },
-    function: goToAboutInfo(tg, callbackQuery){
+
+    goToAboutInfo: function (tg, callbackQuery){
     text = 'О нас:'
         let Button1 = {
         text: 'Назад в меню',
@@ -146,8 +147,8 @@ module.exports = {
     let options = Object.assign(
         {},
         {
-            text: '<bold>Ozone Box Cosmetics </bold>',
-            parse_mode
+           /* text: '<bold>Ozone Box Cosmetics </bold>',
+            parse_mode: HTML,*/
             reply_markup: JSON.stringify(
                 {
                     inline_keyboard: [

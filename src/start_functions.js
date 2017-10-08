@@ -3,7 +3,7 @@ module.exports = {
 
     sendStartMessage: function (tg, message)
 {
-    let text = ' Have you ever heard about unique healing properties of molozonides? If not, you should definitely try our fantastic products made according to the latest scientific knowledge about the wonderful action of molozonides. Check out our website to learn more!'
+    let text = 'Интернет магазин озоновой косметики Ozone Box. Теперь в Telegram!'
 
     let catalogButton = {
         text: 'Наши решения 🌟',
@@ -15,6 +15,7 @@ module.exports = {
         text: "FAQ ❓",
         callback_data: 'FAQCmd'
     }
+
 
     let aboutButton = {
         text: "О нас    🔊",
@@ -57,7 +58,7 @@ module.exports = {
 
 
     sendStartMessage2 : function (tg, callbackQuery) {
-    let text = '  Have you ever heard about unique healing properties of molozonides? If not, you should definitely try our fantastic products made according to the latest scientific knowledge about the wonderful action of molozonides. Check out our website to learn more!'
+    let text = 'Интернет магазин озоновой косметики Ozone Box. Теперь в Telegram!'
 
     let catalogButton = {
         text: 'Наши решения 🌟',

@@ -1,5 +1,6 @@
 import TelegramBot from 'node-telegram-bot-api'
 
+import goods_func from './goods_func'
 let botan = require('botanio')('786f747c-6fe7-4a7f-95a6-c8ef510a59f0')
 
 let mongoose = require('mongoose')
@@ -111,18 +112,19 @@ function onCallbackQuery(callbackQuery) {
 
 
 
-    /*else if (callbackQuery.data === 'catalogHair') {
+    else if (callbackQuery.data === 'catalogHair') {
 
-        const goToCatalogHair = goToCatalogHair1(callbackQuery)
+        const goToComplexHair = good_func.goToComplexHair1(tg, callbackQuery)
     }
 
     else if (callbackQuery.data === 'catalogFace') {
-        const goToCatalogFace = goToCatalogFace1(callbackQuery)
+        const goToComplexFace = goods_func.goToComplexFace1(tg, callbackQuery)
     }
     else if (callbackQuery.data === 'catalogBody') {
 
-        const goToCatalogBody = goToCatalogBody1(callbackQuery)
+        const goToComplexBody = goods_func.goToComplexBody1(tg, callbackQuery)
     }
+    /*
     else if (callbackQuery.data === 'catalogSkin') {
 
         const goToCatalogSkin = goToCatalogSkin1(callbackQuery)

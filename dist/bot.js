@@ -4,6 +4,10 @@ var _nodeTelegramBotApi = require('node-telegram-bot-api');
 
 var _nodeTelegramBotApi2 = _interopRequireDefault(_nodeTelegramBotApi);
 
+var _goods_func = require('./goods_func');
+
+var _goods_func2 = _interopRequireDefault(_goods_func);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var botan = require('botanio')('786f747c-6fe7-4a7f-95a6-c8ef510a59f0');
@@ -105,17 +109,16 @@ function onCallbackQuery(callbackQuery) {
     } else if (callbackQuery.data === 'menuCmd') {
 
         var goToMenu = start_functions.sendStartMessage2(tg, callbackQuery);
-    }
+    } else if (callbackQuery.data === 'catalogHair') {
 
-    /*else if (callbackQuery.data === 'catalogHair') {
-          const goToCatalogHair = goToCatalogHair1(callbackQuery)
+        var goToComplexHair = good_func.goToComplexHair1(tg, callbackQuery);
+    } else if (callbackQuery.data === 'catalogFace') {
+        var goToComplexFace = _goods_func2.default.goToComplexFace1(tg, callbackQuery);
+    } else if (callbackQuery.data === 'catalogBody') {
+
+        var goToComplexBody = _goods_func2.default.goToComplexBody1(tg, callbackQuery);
     }
-      else if (callbackQuery.data === 'catalogFace') {
-        const goToCatalogFace = goToCatalogFace1(callbackQuery)
-    }
-    else if (callbackQuery.data === 'catalogBody') {
-          const goToCatalogBody = goToCatalogBody1(callbackQuery)
-    }
+    /*
     else if (callbackQuery.data === 'catalogSkin') {
           const goToCatalogSkin = goToCatalogSkin1(callbackQuery)
     }
@@ -130,12 +133,10 @@ function onCallbackQuery(callbackQuery) {
             var goToFromMenu2 = menu_func.goToFAQ(tg, callbackQuery);
         } else if (callbackQuery.data === 'callBackCmd') {
             var getNumberForCallBack = menu_func.goToCallBack(tg, callbackQuery);
+        } else if (callbackQuery.data === 'aboutCmd') {
+            var goToAboutInfo1 = goToAboutInfo(tg, 'callbackQuery');
         }
         /*
-            else if (callbackQuery.data === 'aboutCmd'){
-                let goToAboutInfo = goToAboutInfo1('callbackQuery')
-            }
-        
             else if (callbackQuery.data === 'orderCmd'){
                 let goToOrder = goToOrder1('callbackQuery')
             }
