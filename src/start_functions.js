@@ -3,33 +3,36 @@ module.exports = {
 
     sendStartMessage: function (tg, message)
 {
-    let text = 'Интернет магазин озоновой косметики Ozone Box. Теперь в Telegram!'
+    let text = 'Добро пожаловать в интернет магазин озоновой косметики <b>Ozone Box</b>.\n'+
+        'Теперь в Telegram!\n'+
+        '\n'+
+        '\n'
+
 
     let catalogButton = {
-        text: 'Наши решения 🌟',
+        text: 'Наши решения  🌟',
         callback_data: 'catalogCmd'
 
     }
 
     let FAQButton = {
-        text: "FAQ ❓",
+        text: "FAQ  ❓",
         callback_data: 'FAQCmd'
     }
 
-
     let aboutButton = {
-        text: "О нас    🔊",
+        text: "О нас  ⭐️",
         callback_data: 'aboutCmd'
     }
 
     let principButton = {
-        text: "Принцип действия   🌐 ",
+        text: "Принцип действия  🌐 ",
         callback_data: 'principCmd'
     }
 
 
     let callBackButton = {
-        text: "Обратный ввонок  📲",
+        text: "Обратный звонок  ☎",
         callback_data: 'callBackCmd'
     }
 
@@ -41,15 +44,16 @@ module.exports = {
     let options = Object.assign(
         {},
         {
+            parse_mode: 'HTML',
             reply_markup: JSON.stringify(
                 {
+
                     inline_keyboard: [
                         [aboutButton],
                         [principButton],
                         [catalogButton],
                         [FAQButton],
-                        [callBackButton],
-                        [feedBackButton]
+                        [callBackButton]
                     ]
                 })
         })
@@ -58,32 +62,35 @@ module.exports = {
 
 
     sendStartMessage2 : function (tg, callbackQuery) {
-    let text = 'Интернет магазин озоновой косметики Ozone Box. Теперь в Telegram!'
+        let text = 'Добро пожаловать в интернет магазин озоновой косметики <b>Ozone Box</b>.\n'+
+            'Теперь в Telegram!\n'+
+            '\n'+
+            '\n'
 
     let catalogButton = {
-        text: 'Наши решения 🌟',
+        text: 'Наши решения  🌟',
         callback_data: 'catalogCmd'
 
     }
 
     let FAQButton = {
-        text: "FAQ ❓",
+        text: "FAQ  ❓",
         callback_data: 'FAQCmd'
     }
 
     let aboutButton = {
-        text: "О нас    🔊",
+        text: "О нас  ⭐️",
         callback_data: 'aboutCmd'
     }
 
     let principButton = {
-        text: "Принцип действия   🌐 ",
+        text: "Принцип действия  🌐 ",
         callback_data: 'principCmd'
     }
 
 
     let callBackButton = {
-        text: "Обратный ввонок  📲",
+        text: "Обратный звонок  ☎",
         callback_data: 'callBackCmd'
     }
 
@@ -96,15 +103,16 @@ module.exports = {
     let options = Object.assign(
         {},
         {
+            parse_mode: 'HTML',
             reply_markup: JSON.stringify(
                 {
+
                     inline_keyboard: [
                         [aboutButton],
                         [principButton],
                         [catalogButton],
                         [FAQButton],
-                        [callBackButton],
-                        [feedBackButton]
+                        [callBackButton]
                     ]
                 })
         },

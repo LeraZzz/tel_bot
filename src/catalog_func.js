@@ -236,7 +236,7 @@ goToCatalogComplex1: function (tg, callbackQuery) {
         callback_data: 'catalogComplexSkin'
     }
     let Button4 = {
-        text: 'Назад к каталогу',
+        text: '🔙',
         callback_data: 'catalogCmd'
     }
 

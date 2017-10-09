@@ -98,7 +98,22 @@ function onMessage(message) {
         start_functions.sendStartMessage(tg, message);
         return;
     }
+
+    if (message.contact !== 0) {
+        var text = 'Заказ обратного звонка: ' + message.contact.first_name + ' ' + message.contact.last_name + ' ' + message.contact.phone_number;
+        tg.sendMessage(-1001126980476, text);
+    }
 }
+
+/*function onContact(contact){
+    console.log('YEAAHHH')
+    let t = contact.first_name
+    var text ='Заказ звонка:'+ //contact.first_name + contact.last_name + contact.phone_number
+
+  let textInfo = Informat.toString()
+    tg.sendMessage(-1001126980476, text)
+
+}*/
 
 function onCallbackQuery(callbackQuery) {
 
@@ -111,7 +126,7 @@ function onCallbackQuery(callbackQuery) {
         var goToMenu = start_functions.sendStartMessage2(tg, callbackQuery);
     } else if (callbackQuery.data === 'catalogHair') {
 
-        var goToComplexHair = good_func.goToComplexHair1(tg, callbackQuery);
+        var goToComplexHair = _goods_func2.default.goToComplexHair1(tg, callbackQuery);
     } else if (callbackQuery.data === 'catalogFace') {
         var goToComplexFace = _goods_func2.default.goToComplexFace1(tg, callbackQuery);
     } else if (callbackQuery.data === 'catalogBody') {
@@ -134,18 +149,16 @@ function onCallbackQuery(callbackQuery) {
         } else if (callbackQuery.data === 'callBackCmd') {
             var getNumberForCallBack = menu_func.goToCallBack(tg, callbackQuery);
         } else if (callbackQuery.data === 'aboutCmd') {
-            var goToAboutInfo1 = goToAboutInfo(tg, 'callbackQuery');
+            var goToAboutInfo1 = menu_func.goToAboutInfo(tg, callbackQuery);
         }
         /*
             else if (callbackQuery.data === 'orderCmd'){
                 let goToOrder = goToOrder1('callbackQuery')
             }
-        
-            else if (callbackQuery.data === 'principCmd'){
-                let goToPrincip = goToPrincip1('callbackQuery')
-            }    */
-
-        else if (callbackQuery.data === 'feedBackCmd') {
+        */
+        else if (callbackQuery.data === 'principCmd') {
+                var goToPrincip = menu_func.goToPrincip1(tg, callbackQuery);
+            } else if (callbackQuery.data === 'feedBackCmd') {
 
                 var helpText = "Если у вас есть пожелания к работе магазина, напишите сюда ваш отзыв, и мы обязательно учтем его в дальнейшей работе";
 

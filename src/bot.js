@@ -56,6 +56,7 @@ function create() {
     })
     tg.on('message', onMessage)
     tg.on('callback_query', onCallbackQuery)
+
 }
 
 
@@ -88,13 +89,26 @@ function onMessage(message) {
         return
     }
 
-    if (message.text && message.text.toLowerCase() === '/start') {
+     else if (message.text && message.text.toLowerCase() === '/start') {
         start_functions.sendStartMessage(tg, message)
         return
     }
 
+     else if (message.contact !== 0){
+        let text = 'Заказ обратного звонка: '+ message.contact.first_name + ' ' + message.contact.last_name + ' ' + message.contact.phone_number
+        tg.sendMessage(-1001126980476, text)
+    }
 }
 
+/*function onContact(contact){
+    console.log('YEAAHHH')
+    let t = contact.first_name
+    var text ='Заказ звонка:'+ //contact.first_name + contact.last_name + contact.phone_number
+
+  let textInfo = Informat.toString()
+    tg.sendMessage(-1001126980476, text)
+
+}*/
 
 function onCallbackQuery(callbackQuery) {
 
@@ -114,7 +128,7 @@ function onCallbackQuery(callbackQuery) {
 
     else if (callbackQuery.data === 'catalogHair') {
 
-        const goToComplexHair = good_func.goToComplexHair1(tg, callbackQuery)
+        const goToComplexHair = goods_func.goToComplexHair1(tg, callbackQuery)
     }
 
     else if (callbackQuery.data === 'catalogFace') {
@@ -150,16 +164,16 @@ function onCallbackQuery(callbackQuery) {
     }
 
     else if (callbackQuery.data === 'aboutCmd'){
-        let goToAboutInfo1 = goToAboutInfo(tg, 'callbackQuery')
+        let goToAboutInfo1 = menu_func.goToAboutInfo(tg, callbackQuery)
     }
 /*
     else if (callbackQuery.data === 'orderCmd'){
         let goToOrder = goToOrder1('callbackQuery')
     }
-
+*/
     else if (callbackQuery.data === 'principCmd'){
-        let goToPrincip = goToPrincip1('callbackQuery')
-    }    */
+        let goToPrincip = menu_func.goToPrincip1(tg, callbackQuery)
+    }
 
     else if (callbackQuery.data === 'feedBackCmd') {
 
