@@ -3,11 +3,12 @@ module.exports = {
 
     goToCallBack: function (tg, callbackQuery) {
 
+
         let options = {
             "parse_mode": "Markdown",
             "reply_markup": {
                 "force_reply": true,
-                "one_time_keyboard": true,
+                //"one_time_keyboard": true,
                 "resize_keyboard": true,
                 "remove_keyboard": true,
                 "callback_data": "numberQuery",
@@ -18,7 +19,7 @@ module.exports = {
             }
         }
 
-        tg.sendMessage(callbackQuery.message.chat.id, "Как с вами связаться?", options)
+        tg.sendMessage(callbackQuery.message.chat.id, 'Пожалуйста, оставьте ваш контактный номер для того, чтобы наш менеджер мог связаться с Вами 👇', options)
 
         User.create({
 
@@ -37,15 +38,16 @@ module.exports = {
 
     goToFAQ: function (tg, callbackQuery) {
 
-        let text = 'Часто задаваемые вопросы 🤗 :'
+        let text = 'В этом разделе собраны наиболее популярные темы вопросов о косметике <b>Ozone Box</b>. Если вы не нашли ответ на свой вопрос,'+
+            'закажите звонок нашего менеджера в главном меню и мы с радостью Вам поможем. \n'
 
         let Button1 = {
-            text: 'Часто задаваемые вопросы',
+            text: 'Часто задаваемые вопросы  🐼',
             callback_data: 'faqQuestionsCmd'
         }
 
         let Button2 = {
-            text: 'Мифы и правда об озоновой косметике',
+            text: 'Мифы vs Правда  🦄 ',
             callback_data: 'faqMythsCmd'
         }
         let Button3 = {
@@ -78,18 +80,18 @@ module.exports = {
         let text = '<b>Выбери свой...</b>'+'\n'
 
         let Button2 = {
-            text: 'OzoneBox для волос 💆',
-            callback_data: 'catalogHair'
+            text: 'OzoneBox для волос   💆',
+            callback_data: 'catalogHairCmd'
         }
 
         let Button1 = {
-            text: 'OzoneBox для лица  💁',
-            callback_data: 'catalogFace'
+            text: 'OzoneBox для лица    💁',
+            callback_data: 'catalogFaceCmd'
         }
 
         let Button3 = {
-            text: 'OzoneBox для тела  🏃‍♀️',
-            callback_data: 'catalogBody'
+            text: 'OzoneBox для тела    🏃‍♀️',
+            callback_data: 'catalogBodyCmd'
 
         }
 /*
