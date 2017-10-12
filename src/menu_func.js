@@ -18,7 +18,7 @@ module.exports = {
             }
         }
 
-        tg.sendMessage(callbackQuery.message.chat.id, "Как с вами связаться?", options)//"text inside"
+        tg.sendMessage(callbackQuery.message.chat.id, "Как с вами связаться?", options)
 
         User.create({
 
@@ -40,13 +40,13 @@ module.exports = {
         let text = 'Часто задаваемые вопросы 🤗 :'
 
         let Button1 = {
-            text: 'wtf',
-            callback_data: '1'
+            text: 'Часто задаваемые вопросы',
+            callback_data: 'faqQuestionsCmd'
         }
 
         let Button2 = {
-            text: 'Do Androids dream of electric sheep?',
-            callback_data: '2'
+            text: 'Мифы и правда об озоновой косметике',
+            callback_data: 'faqMythsCmd'
         }
         let Button3 = {
             text: '🔙',
@@ -75,7 +75,7 @@ module.exports = {
 
     goToCatalog: function (tg, callbackQuery) {
 
-        let text = 'Комплексы Ozone Box:'
+        let text = '<b>Выбери свой...</b>'+'\n'
 
         let Button2 = {
             text: 'OzoneBox для волос 💆',
@@ -115,6 +115,7 @@ module.exports = {
         let options = Object.assign(
             {},
             {
+                parse_mode: 'HTML',
                 reply_markup: JSON.stringify(
                     {
                         inline_keyboard: [
@@ -263,11 +264,11 @@ module.exports = {
                         ]
                     })
             },
-           /* {
+            {
                 message_id: callbackQuery.message.message_id,
                 chat_id: callbackQuery.message.chat.id
-            }*/
+            }
         )
-        tg.sendMessage(callbackQuery.message.chat.id, text, options)
+        tg.editMessageText(text, options)
     }
 }

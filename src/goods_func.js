@@ -18,6 +18,11 @@ module.exports = {
             callback_data: 'catalogCmd'
         }
 
+        let Button1 = {
+            text: 'КУПИТЬ',
+            callback_data: 'buyComplexFaceCmd'
+        }
+
         let options = Object.assign(
             {},
             {
@@ -26,6 +31,7 @@ module.exports = {
                     {
                         inline_keyboard: [
 
+                            [Button1],
                             [Button4]
                         ]
                     })
@@ -38,6 +44,7 @@ module.exports = {
         tg.editMessageText(text, options)
 
     },
+
     goToComplexHair1: function(tg, callbackQuery) {
         let text ='<a href="https://pp.userapi.com/c639229/v639229915/4b521/SbRdYbAC6mg.jpg">&#8205;</a>'+
             '<b>Комплекс\n'+'«Полное восстановление волос»\n</b>' +
@@ -57,6 +64,10 @@ module.exports = {
             text: '🔙',
             callback_data: 'catalogCmd'
         }
+        let Button1 = {
+            text: 'КУПИТЬ',
+            callback_data: 'buyComplexHairCmd'
+        }
 
         let options = Object.assign(
             {},
@@ -66,6 +77,7 @@ module.exports = {
                     {
                         inline_keyboard: [
 
+                            [Button1],
                             [Button4]
                         ]
                     })
@@ -99,6 +111,11 @@ module.exports = {
             callback_data: 'catalogCmd'
         }
 
+        let Button1 = {
+            text: 'КУПИТЬ',
+            callback_data: 'buyComplexBodyCmd'
+        }
+
         let options = Object.assign(
             {},
             {
@@ -107,6 +124,7 @@ module.exports = {
                     {
                         inline_keyboard: [
 
+                            [Button1],
                             [Button4]
                         ]
                     })
@@ -118,6 +136,53 @@ module.exports = {
         )
         tg.editMessageText(text, options)
 
+
+    },
+
+
+
+    buyComplexFace1: function(tg, callbackQuery) {
+        let text = '<b>Комплекс\n'+'«Безупречно чистая кожа»\n</b>' +
+            '<b>3 990 руб\n</b>' +
+            '\n'+
+
+            '<b>В комплекс входит:\n</b>' +
+            '• Озоновый крем дневной. Экспресс-уход. PV 500 (50 мл)\n' +
+            '• Озоновый крем ночной. Релакс. PV 500 (50 мл)\n' +
+            '• Озонированное масло ОТРИ® 6 000 (25 мл)\n' +
+            '• Инструкция по применению'+
+            '\n'+
+            'Для '
+
+        let Button4 = {
+            text: '🔙',
+            callback_data: 'catalogCmd'
+        }
+
+        let Button1 = {
+            text: 'Оставить контактные данные',
+            request_contact: true
+        }
+
+        let options = Object.assign(
+            {},
+            {
+                parse_mode: 'HTML',
+                reply_markup: JSON.stringify(
+                    {
+                        inline_keyboard: [
+
+                            [Button1],
+                            [Button4]
+                        ]
+                    })
+            },
+            {
+                message_id: callbackQuery.message.message_id,
+                chat_id: callbackQuery.message.chat.id
+            }
+        )
+        tg.editMessageText(text, options)
 
     }
 
