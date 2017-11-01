@@ -3,7 +3,8 @@ module.exports = {
 
     sendStartMessage: function (tg, message)
 {
-    let text = '<b>Озоновая косметика OZONE BOX \n</b>' +
+    let text =/*'<a href="https://pp.userapi.com/c824202/v824202891/c644/liHWp02ZbJw.jpg">&#8205;</a>' */ '<b>Озоновая косметика OZONE BOX \n</b>' +
+        '\n' +
         'Здесь вы можете узнать больше о нашей компании и продукции, посмотреть каталог  косметики и одним кликом купить товар, а также заказать звонок нашего менеджера.\n'+
         '\n'+
         '\n'
@@ -41,6 +42,12 @@ module.exports = {
         text: " Оставить отзыв 😘",
         callback_data: 'feedBackCmd'
     }
+
+    let goToBeforeAfter = {
+    text: 'До/После   🙀😻',
+    callback_data: 'goToBeforeAfterCmd'
+
+}
     let options = Object.assign(
         {},
         {
@@ -51,6 +58,7 @@ module.exports = {
                     inline_keyboard: [
                         [aboutButton],
                         [principButton],
+                        [goToBeforeAfter],
                         [catalogButton],
                         [FAQButton],
                         [callBackButton]
@@ -95,6 +103,11 @@ module.exports = {
         callback_data: 'callBackCmd'
     }
 
+        let goToBeforeAfter = {
+            text: 'До/После   🙀😻',
+            callback_data: 'goToBeforeAfterCmd'
+
+        }
 
     let feedBackButton = {
         text: " Оставить отзыв 😘",
@@ -111,6 +124,7 @@ module.exports = {
                     inline_keyboard: [
                         [aboutButton],
                         [principButton],
+                        [goToBeforeAfter],
                         [catalogButton],
                         [FAQButton],
                         [callBackButton]

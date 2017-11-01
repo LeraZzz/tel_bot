@@ -142,7 +142,7 @@ function onCallbackQuery(callbackQuery) {
         var buyComplexHair = _buy_func2.default.buyComplexHair1(tg, callbackQuery);
     } else if (callbackQuery.data === 'catalogFaceCmd') {
         var goToComplexFace = _goods_func2.default.goToComplexFace1(tg, callbackQuery);
-    } else if (callbackQuery.data === 'buyCoplexFaceCmd') {
+    } else if (callbackQuery.data === 'buyComplexFaceCmd') {
         var buyComplexFace = _buy_func2.default.buyComplexFace1(tg, callbackQuery);
     } else if (callbackQuery.data === 'catalogBodyCmd') {
 
@@ -150,7 +150,11 @@ function onCallbackQuery(callbackQuery) {
     } else if (callbackQuery.data === 'buyComplexBodyCmd') {
 
         var buyComplexBody = _buy_func2.default.buyComplexBody1(tg, callbackQuery);
+    } else if (callbackQuery.data === 'goToBeforeAfterCmd') {
+
+        var goToBeforeAfter = menu_func.goToBeforeAfter1(tg, callbackQuery);
     }
+
     /*
     else if (callbackQuery.data === 'catalogSkin') {
           const goToCatalogSkin = goToCatalogSkin1(callbackQuery)

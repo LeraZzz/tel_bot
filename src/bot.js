@@ -147,7 +147,7 @@ function onCallbackQuery(callbackQuery) {
     else if (callbackQuery.data === 'catalogFaceCmd') {
         const goToComplexFace = goods_func.goToComplexFace1(tg, callbackQuery)
     }
-    else if (callbackQuery.data === 'buyCoplexFaceCmd') {
+    else if (callbackQuery.data === 'buyComplexFaceCmd') {
         const buyComplexFace = buy_func.buyComplexFace1(tg, callbackQuery)
     }
     else if (callbackQuery.data === 'catalogBodyCmd') {
@@ -158,6 +158,13 @@ function onCallbackQuery(callbackQuery) {
 
         const buyComplexBody = buy_func.buyComplexBody1(tg, callbackQuery)
     }
+
+
+    else if (callbackQuery.data === 'goToBeforeAfterCmd') {
+
+        const goToBeforeAfter = menu_func.goToBeforeAfter1(tg, callbackQuery)
+    }
+
     /*
     else if (callbackQuery.data === 'catalogSkin') {
 

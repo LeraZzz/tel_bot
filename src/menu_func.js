@@ -58,6 +58,7 @@ module.exports = {
         let options = Object.assign(
             {},
             {
+                parse_mode: 'HTML',
                 reply_markup: JSON.stringify(
                     {
                         inline_keyboard: [
@@ -151,8 +152,8 @@ module.exports = {
         'качества Российского и Европейского сообщества, одобрена и рекомендована Ассоциацией Российских озонотерапевтов.\n'+
         '\n'+
         '<b>ООО «БЬЮМЕТИКС»\n</b>' +
-        'ОФИЦИАЛЬНЫЙ ПРЕДСТАВИТЕЛЬ O’THREE COSMETIC LAB\n' +
-        'В САНКТ-ПЕТЕРБУРГЕ И СЕВЕРО-ЗАПАДНОМ РЕГИОНЕ\n'+
+        'официальный представитель O’THREE COSMETIC LAB\n' +
+        'в Санкт-Петербурге и Северо-Западном регионе\n'+
         '<b>ОПЫТ:\n</b>' +
         'Исследования нашими учеными были начаты более 20' +
         'лет назад! К 2009 году «Российская школа озонотерапии»\n' +
@@ -161,13 +162,11 @@ module.exports = {
         'эффективность Российских методик озонотерапии' +
         'многократно обоснована и доказана в различных\n' +
         'областях медицины.\n'+
-        '<b>КОНТАКТЫ:\n</b>' +
-        '<b>ОКСАНА БУЛАНЬКОВА</b>, ДИРЕКТОР ПО РАЗВИТИЮ\n' +
-        '<b>E-MAIL</b>: OKSANA.BULANKOVA@BEAUMETICS.RU\n' +
+
         '<b>ТЕЛ.</b>: +7 911 240 22 09\n' +
-        '<b>НАТАЛЬЯ КАСАТКИНА</b>, ДИРЕКТОР ПО МАРКЕТИНГУ\n' +
-        '<b>E-MAIL</b>: NATALIA.KASATKINA@BEAUMETICS.RU\n' +
-        '<b>ТЕЛ.</b>: +7 981 831 57 77'
+        '<b>Наталья Касаткина</b>, директор по маркетингу\n' +
+        '<b>e-mail</b>: natalia.kasatkina@Bbeaumetics\n' +
+        '<b>Тел.</b>: +7 981 831 57 77'
 
 
         let Button1 = {
@@ -272,5 +271,47 @@ module.exports = {
             }
         )
         tg.editMessageText(text, options)
+    },
+
+    goToBeforeAfter1: function (tg, callbackQuery){
+        const text = 'Результаты применения косметики<b> OZONE BOX </b>: \n'+
+            //'<a href=" https://pp.userapi.com/c841120/v841120315/24aac/LyFIEe8q5DQ.jpg">&#8205;</a>'
+            '<a href="https://pp.userapi.com/c824204/v824204587/d36b/tW3HKXnWCI8.jpg">&#8205;</a>\n'
+            //'<a href=" https://pp.userapi.com/c841120/v841120315/24ab4/2nbC5yIg-qs.jpg">&#8205;</a>\n'
+            /*'<a href=" https://pp.userapi.com/c841120/v841120315/24abd/cimEGZ6GRfc.jpg">&#8205;</a>\n'+
+            '<a href=" https://pp.userapi.com/c841120/v841120315/24ac6/eozjunCDFwo.jpg">&#8205;</a>\n'+
+            '<a href=" https://pp.userapi.com/c841120/v841120315/24ad8/RpFlG_LX5fQ.jpg">&#8205;</a>\n'+
+            '<a href=" https://pp.userapi.com/c841120/v841120315/24ae1/0S3jqnd9dsw.jpg">&#8205;</a>\n'+
+            '<a href=" https://pp.userapi.com/c841120/v841120315/24b04/h7b3Btfdmro.jpg">&#8205;</a>\n'+
+             '<a href="https://pp.userapi.com/c841120/v841120315/24afc/hW-1_rJiw4U.jpg">&#8205;</a>\n'+
+             '<a href="https://pp.userapi.com/c841120/v841120315/24af3/la9-v9tpFno.jpg">&#8205;</a>\n'+
+             '<a href="https://pp.userapi.com/c840729/v840729902/eea0/ZXZYLuaNkG4.jpg">&#8205;</a>\n'*/
+           //  '<a href="">&#8205;</a>\n'+
+
+
+        let Button1 = {
+            text: '🔙',
+            callback_data: 'menuCmd'
+        }
+
+        let options = Object.assign(
+            {},
+            {
+                parse_mode: 'HTML',
+                reply_markup: JSON.stringify(
+                    {
+                        inline_keyboard: [
+                            [Button1]
+
+                        ]
+                    })
+            },
+            {
+                message_id: callbackQuery.message.message_id,
+                chat_id: callbackQuery.message.chat.id
+            }
+        )
+        tg.editMessageText(text, options)
     }
+
 }
