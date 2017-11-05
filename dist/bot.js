@@ -65,8 +65,8 @@ var UserReview = mongoose.model('UserReview', userReviewSchema);
 var tg = void 0;
 
 function create() {
-    var token = "387016243:AAEXimznXpHl5ke6qpUanexj_Wm9mH79y_s"; //zzz_bot
-    //  const token = "467244885:AAHILNeTqyldJJzC4XLyfbIl8JxmdK8w62A" //ozone_cosmetics
+    // const token = "387016243:AAEXimznXpHl5ke6qpUanexj_Wm9mH79y_s"//zzz_bot
+    var token = "467244885:AAHILNeTqyldJJzC4XLyfbIl8JxmdK8w62A"; //ozone_cosmetics
     tg = new _nodeTelegramBotApi2.default(token, {
         polling: true
     });
