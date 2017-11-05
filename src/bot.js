@@ -51,8 +51,8 @@ let UserReview = mongoose.model('UserReview', userReviewSchema)
 let tg
 
 function create() {
-    const token = "387016243:AAEXimznXpHl5ke6qpUanexj_Wm9mH79y_s"//zzz_bot
-    //  const token = "467244885:AAHILNeTqyldJJzC4XLyfbIl8JxmdK8w62A" //ozone_cosmetics
+   // const token = "387016243:AAEXimznXpHl5ke6qpUanexj_Wm9mH79y_s"//zzz_bot
+    const token = "467244885:AAHILNeTqyldJJzC4XLyfbIl8JxmdK8w62A" //ozone_cosmetics
     tg = new TelegramBot(token, {
         polling: true
     })
